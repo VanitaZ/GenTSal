@@ -24,8 +24,5 @@ public class Main {
 
         System.out.println(graph.toString());
 
-        Walker w = new Walker(graph);
-        w.test(0);
-
     }
 }
