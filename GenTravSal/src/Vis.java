@@ -13,8 +13,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
-public class Main {
-    public static void main(String[] args) {
+public class Vis {
+    public static void test() {
         Graph<String, Integer> g = new UndirectedSparseGraph<String, Integer>();
         g.addVertex("Vert1");
         g.addVertex("Vert2");
