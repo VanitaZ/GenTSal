@@ -1,3 +1,16 @@
 .idea/
 out/
 *.iml
+*.class
+bin/*
+
+# Editor droppings
+.project
+.metadata
+*.bak
+*.swp
+local.properties
+.classpath
+.cproject
+.buildpath
+Desktop.ini
