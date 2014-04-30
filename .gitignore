@@ -14,3 +14,5 @@ local.properties
 .cproject
 .buildpath
 Desktop.ini
+*.acme
+tags

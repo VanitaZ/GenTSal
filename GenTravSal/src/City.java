@@ -1,12 +1,23 @@
 public class City {
-    final int id;
+    int id;
 
     public City(int id) {
         this.id = id;
     }
-
-    public int getId() {
-        return id;
+    
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) { return false; }
+        if (o instanceof City) {
+            City c = (City) o;
+            return this.id == c.id;
+        }
+        return false;
+    }
+    
+    @Override
+    public int hashCode() {
+        return this.id;
     }
 
     @Override
