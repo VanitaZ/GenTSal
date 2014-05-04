@@ -1,7 +1,5 @@
-import java.io.*;
-
-import edu.uci.ics.jung.graph.Graph;
-import edu.uci.ics.jung.graph.UndirectedSparseGraph;
+import java.io.IOException;
+import java.io.StringReader;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -14,7 +12,8 @@ public class Main {
         graph.addEdge(new Road(2),city3, city0);
         graph.addEdge(new Road(7),city0, city2);
         graph.addEdge(new Road(3),city1, city3);*/
-
+        ProgramMainWindow window = new ProgramMainWindow();
+        window.setGraph(graph);
         System.out.println(graph.toString());
 
     }

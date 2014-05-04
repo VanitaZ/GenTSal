@@ -1,9 +1,11 @@
-import java.util.*;
-import java.io.*;
-
 import edu.uci.ics.jung.graph.UndirectedSparseGraph;
 
-class CityGraph extends UndirectedSparseGraph<City, Road> {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.ArrayList;
+
+public class CityGraph extends UndirectedSparseGraph<City, Road> {
     static enum TokenT { NODE, EDGE, SEP }  // EDGE = "->", SEP = ";"
     static class Token {
         TokenT t;
