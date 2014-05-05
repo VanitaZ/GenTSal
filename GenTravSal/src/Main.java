@@ -1,11 +1,10 @@
 import java.io.IOException;
-import java.io.StringReader;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        CityGraph graph = new CityGraph();
-        graph.parse("<test>", new StringReader("0 -> 1 -> 2 -> 3 -> 0 -> 2 ; 1 -> 3"));
-        
+        //CityGraph graph = new CityGraph();
+        //graph.parse("<test>", new StringReader("0 -> 1 -> 2 -> 3 -> 0 -> 2 ; 1 -> 3"));
+        CityGraph graph = GraphGenerator.generate(7);
         /*graph.addEdge(new Road(5),city0, city1);
         graph.addEdge(new Road(3),city1, city2);
         graph.addEdge(new Road(6),city2, city3);

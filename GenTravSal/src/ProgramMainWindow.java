@@ -11,8 +11,8 @@ import java.awt.*;
 public class ProgramMainWindow {
     JFrame mainWindow;
     CityGraph graph;
-    Layout<City, Road> layout;
-    VisualizationViewer<City, Road> vv;
+    Layout<Integer, Road> layout;
+    VisualizationViewer<Integer, Road> vv;
 
     public ProgramMainWindow(){
 
@@ -33,32 +33,32 @@ public class ProgramMainWindow {
     public void setGraph(CityGraph graph){
         this.graph = graph;
 
-        layout = new CircleLayout<City, Road>(graph);
+        layout = new CircleLayout<Integer, Road>(graph);
         layout.setSize(new Dimension(650,650));
 
-        vv = new VisualizationViewer<City, Road>(layout);
+        vv = new VisualizationViewer<Integer, Road>(layout);
         vv.setPreferredSize(new Dimension(700,700));
 
         Transformer<Road, Paint> roadPainter = new Transformer<Road, Paint>(){
             @Override
             public Paint transform(Road road) {
-                if(road.length <5){
+                if(road.value <5){
                     return Color.GREEN;
                 }
-                if(road.length < 20){
+                if(road.value < 20){
                     return Color.YELLOW;
                 }
                 return Color.RED;
             }
         };
 
-        vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller<City>());
+        vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller<Integer>());
         vv.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller<Road>());
         vv.getRenderer().getVertexLabelRenderer().setPosition(edu.uci.ics.jung.visualization.renderers.Renderer.VertexLabel.Position.N);
         vv.getRenderContext().setLabelOffset(20);
         vv.getRenderContext().setEdgeDrawPaintTransformer(roadPainter);
 
-        DefaultModalGraphMouse<City, Road> mouse = new DefaultModalGraphMouse<City, Road>();
+        DefaultModalGraphMouse<Integer, Road> mouse = new DefaultModalGraphMouse<Integer, Road>();
         vv.setGraphMouse(mouse);
 
         JMenuBar menuBar = new JMenuBar();
