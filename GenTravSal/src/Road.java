@@ -1,14 +1,14 @@
 public class Road {
-    public int length;
+    public double value;
 
-    public Road(int length) {
-        this.length = length;
+    public Road(int value) {
+        this.value = value;
     }
 
     @Override
     public String toString() {
         return "Road{" +
-                "length=" + length +
+                "value=" + value +
                 '}';
     }
 }
