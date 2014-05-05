@@ -1,5 +1,6 @@
 public class City {
-    int id;
+    public int id;
+    public double value;
 
     public City(int id) {
         this.id = id;

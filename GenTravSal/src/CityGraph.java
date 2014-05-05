@@ -3,9 +3,16 @@ import edu.uci.ics.jung.graph.UndirectedSparseGraph;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
+import java.util.*;
 
-public class CityGraph extends UndirectedSparseGraph<City, Road> {
+public class CityGraph extends UndirectedSparseGraph<Integer, Road> {
+    public HashMap<Integer, City> cities;
+    
+    public CityGraph() {
+        super();
+        cities = new HashMap<Integer, City>();
+    }
+    
     static enum TokenT { NODE, EDGE, SEP }  // EDGE = "->", SEP = ";"
     static class Token {
         TokenT t;
@@ -13,15 +20,22 @@ public class CityGraph extends UndirectedSparseGraph<City, Road> {
         int line;
         
         public Token(TokenT typ, String str, int l) { t = typ; s = str; line = l; }
+    }   
+    
+    public City addCity(int id) {
+        City c = new City(id);
+        this.cities.put(id, c);
+        addVertex(id);
+        return c;
     }
     
-    public Road addRoad(int length, City c1, City c2) {
+    public Road addRoad(int value, int c1, int c2) {
         Road r = findEdge(c1, c2);
         if (r != null) {
-            r.length = length;
+            r.value = value;
             return r;
         }
-        r = new Road(length);
+        r = new Road(value);
         addEdge(r, c1, c2);
         return r;
     }
@@ -38,6 +52,7 @@ public class CityGraph extends UndirectedSparseGraph<City, Road> {
         
         int lastNode, nextNode;
         City lastCity, nextCity;
+        Road road;
         
         for (int i = 0; i < tokens.size(); i++) {
             Token tok = tokens.get(i);
@@ -58,8 +73,8 @@ public class CityGraph extends UndirectedSparseGraph<City, Road> {
                 String err = String.format("%s: %d: can't parse node id (%s)", file, tok.line, tok.s);
                 throw new RuntimeException(err);
             }
-            lastCity = new City(lastNode);
-            addVertex(lastCity);
+            lastCity = addCity(lastNode);
+            lastCity.value = 1;
             
             i++;
             tok = tokens.get(i);
@@ -82,10 +97,10 @@ public class CityGraph extends UndirectedSparseGraph<City, Road> {
                     String err = String.format("%s: %d: can't parse node id (%s)", file, tok.line, tok.s);
                     throw new RuntimeException(err);
                 }
-                nextCity = new City(nextNode);
-                addVertex(nextCity);
+                nextCity = addCity(nextNode);
+                nextCity.value = 1;
                 
-                addRoad(1, lastCity, nextCity);
+                road = addRoad(-1, lastNode, nextNode);
                 lastNode = nextNode;
                 lastCity = nextCity;
                 

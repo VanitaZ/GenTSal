@@ -12,9 +12,8 @@ public class Main {
         graph.addEdge(new Road(2),city3, city0);
         graph.addEdge(new Road(7),city0, city2);
         graph.addEdge(new Road(3),city1, city3);*/
+        
         ProgramMainWindow window = new ProgramMainWindow();
         window.setGraph(graph);
-        System.out.println(graph.toString());
-
     }
 }
