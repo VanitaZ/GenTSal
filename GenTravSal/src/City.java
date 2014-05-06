@@ -1,30 +1,15 @@
 public class City {
-    public int id;
-    public double value;
+    public double x, y, z;
 
-    public City(int id) {
-        this.id = id;
+    public City(double ix, double iy, double iz) {
+        x = ix; y = iy; z = iz;
     }
     
-    @Override
-    public boolean equals(Object o) {
-        if (o == null) { return false; }
-        if (o instanceof City) {
-            City c = (City) o;
-            return this.id == c.id;
-        }
-        return false;
-    }
-    
-    @Override
-    public int hashCode() {
-        return this.id;
-    }
-
-    @Override
-    public String toString() {
-        return "City{" +
-                "id=" + id +
-                '}';
+    public static City random() {
+    	double x, y, z;
+    	x = Math.random();
+    	y = Math.random();
+    	z = Math.random() * 0.1;
+    	return new City(x, y, z);
     }
 }

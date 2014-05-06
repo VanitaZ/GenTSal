@@ -1,18 +1,19 @@
 import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        //CityGraph graph = new CityGraph();
-        //graph.parse("<test>", new StringReader("0 -> 1 -> 2 -> 3 -> 0 -> 2 ; 1 -> 3"));
-        CityGraph graph = GraphGenerator.generate(7);
-        /*graph.addEdge(new Road(5),city0, city1);
-        graph.addEdge(new Road(3),city1, city2);
-        graph.addEdge(new Road(6),city2, city3);
-        graph.addEdge(new Road(2),city3, city0);
-        graph.addEdge(new Road(7),city0, city2);
-        graph.addEdge(new Road(3),city1, city3);*/
+    public static void main(String[] args) {
+    	City[] cities = new City[10];
+    	for (int i = 0; i < 10; i++) {
+    		cities[i] = City.random();
+    	}
+    	
+        Population pop = new Population(cities);
+        pop.init(20);
+        pop.iterate();
         
-        ProgramMainWindow window = new ProgramMainWindow();
-        window.setGraph(graph);
+        int[] arr = pop.paths.get(0);
+        for (int i : arr) {
+        	System.out.println(i);
+        }
     }
 }

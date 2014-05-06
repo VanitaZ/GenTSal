@@ -7,7 +7,7 @@ public class Walker /* implements TexasRanger */ {
         this.graph = graph;
     }
 
-    void walk(Path route){
+    void walk(){
 
     }
 }

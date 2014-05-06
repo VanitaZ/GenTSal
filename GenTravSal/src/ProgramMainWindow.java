@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ProgramMainWindow {
-    JFrame mainWindow;
+/*    JFrame mainWindow;
     CityGraph graph;
     Layout<Integer, Road> layout;
     VisualizationViewer<Integer, Road> vv;
@@ -72,5 +72,5 @@ public class ProgramMainWindow {
         mainWindow.getContentPane().add(vv);
         mainWindow.pack();
     }
-
+*/
 }
