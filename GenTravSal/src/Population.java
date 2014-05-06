@@ -31,30 +31,8 @@ class Population {
         cull(len);
     }
     
-    public void sort() {
-        Collections.sort(this.paths, this.new PathCmp());
-    }
-    
-    void cull(int size) {
-        Collections.sort(this.paths, this.new PathCmp());
-        if (size >= this.paths.size()) {
-            return;
-        }
-        this.paths.subList(size-1, this.paths.size()).clear();
-    }
-    
-    class PathCmp implements Comparator<int[]> {
-        public int compare(int[] x, int[] y) {
-            double s1 = pathScore(x);
-            double s2 = pathScore(y);
-            if (s1 > s2) { return 1; }
-            if (s1 < s2) { return -1; }
-            return 0;
-        }
-    }
-    
     // lower score is better
-    double pathScore(int[] path) {
+    public double pathScore(int[] path) {
         double score;
         City c1, c2;
         double dx, dy, dz;
@@ -69,6 +47,28 @@ class Population {
             score += Math.sqrt(dx*dx + dy*dy + dz*dz);
         }
         return score;
+    }
+
+    public void sort() {
+        Collections.sort(this.paths, this.new PathCmp());
+    }
+    
+    void cull(int size) {
+        Collections.sort(this.paths, this.new PathCmp());
+        if (size >= this.paths.size()) {
+            return;
+        }
+        this.paths.subList(size, this.paths.size()).clear();
+    }
+    
+    class PathCmp implements Comparator<int[]> {
+        public int compare(int[] x, int[] y) {
+            double s1 = pathScore(x);
+            double s2 = pathScore(y);
+            if (s1 > s2) { return 1; }
+            if (s1 < s2) { return -1; }
+            return 0;
+        }
     }
     
     int[] defaultPath() {
